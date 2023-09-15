@@ -17,7 +17,7 @@ from utils_plot import plot_traj
 maneuver = input(
     "Enter the name of atomic behavior (ZB, ZF, BF, FB, OTHER): "
 ).upper()
-#maneuver = "ZF"
+# maneuver = "ZF"
 assert maneuver in (["ZB", "ZF", "BF", "FB", "OTHER"])
 if maneuver in (["ZB", "ZF", "BF", "FB"]):
     bar_seperation = float(input("Enter the ladder distance (default is 0.34): "))
@@ -42,6 +42,7 @@ else:
     R               : Input regulization term
     W               : Time panalization of the total trajectory
     init_guess      : Initial trajectory as initial guess for solver 
+    useRefTraj      : Command (1 = yes, 0 = no) whether to use the reference trajectory or not
     '''
     hyper = DircolHypers(
         n=20,
@@ -59,6 +60,8 @@ else:
         R=1,
         W=0,
         init_guess=[0.0, 2.5],
+        useRefTraj=1
+        
     )
     hyper_params = hyper.create_params_structure()
 
