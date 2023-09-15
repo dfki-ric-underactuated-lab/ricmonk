@@ -15,7 +15,7 @@ python3 -E go-zero-pos.py
 ## imu_validation_active_test.py
 For testing the estimation of position and velocity of the unactuated joint using the IMU output, this code may be used. An assumption made is that an acroBot type set is used for this purpose, with the unactuated joint also attached to an actuator. The actuator attached to the unactuated joint is only used to validate the state estimation made using the IMU. The setup used is shown in the following image
 <div align="center">
-<img width="605" src="/hardware/imagesAndGifs/pasActTestSetup.jpeg" />
+<img width="605" src="../../hardware/imagesAndGifs/pasActTestSetup.jpeg" />
 </div>
 Since this is an active test, the setup is made to follow a trajectory and the tracking of the same serves a reference for validating the state estimation method. To run the file use:
 ```
