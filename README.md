@@ -36,7 +36,7 @@ For operating the RicMonk, the following may serve as reference:
 - [Other tests](/software/realSystemTests/README.md)
 
 The CAD file is also provided on grabCAD.com. You can use the 3D viewer from their website to display the 3D model directly within your browser.
- - [Display AcroMonk in 3D](https://grabcad.com/library/acromonk-1)
+ - [Display RicMonk in 3D](https://grabcad.com/library/ricmonk-a-three-link-underactuated-brachiation-robot-with-passive-grippers-1)
 ## Authors #
 
 * [Shivesh Kumar](https://robotik.dfki-bremen.de/en/about-us/staff/person/shku02) (Team Leader Mechanics and Control)
