@@ -8,12 +8,12 @@ Mechanical Design Optimization and integration of necessary electrical component
 the concept of interchangeable and reusable components, stands ready to adapt effortlessly to evolving circumstances. From the bio-inspiration perspective, the RicMonk is closer to Gibbons because of the presence of the tail when compared to the AcroMonk. RicMonk’s tail also plays an important role in the robot’s functioning. It not only provides optimal placement of all the electrical components but also helps extensively in helping the robot brachiate.
 
 <div align="center">
-<img width="400" src="/hardware/imagesAndGifs/explodedView.png" />
+<img width="400" src="/hardware/imagesAndGifs/explodedView_new_bigFont.png" />
 </div>
 
 
 <div align="center">
-<img width="400" src="/hardware/imagesAndGifs/explodedViewGif.gif" />
+<img width="400" src="/hardware/imagesAndGifs/expVidGif.gif" />
 </div>
 
 
