@@ -13,13 +13,13 @@ The RicMonk is the first three-link underactuated brachiation robot with passive
 The following provide theoretical information regarding the RicMonk:
 - [System dynamics](/hardware/dynamic.md)
 - [Mechatronic design and integration](/hardware/mechDesAndInt.md)
-- [Trajectory optimization](/src/ricMonkTrajOptStab/software/python/simulation/behavior_generation/trajectory_optimization/trajOpt.md)
-- [Trajectory stabilization](/src/ricMonkTrajOptStab/software/python/simulation/behavior_control/control.md)
+- [Trajectory optimization](/software/ricMonkTrajOptStab/software/python/simulation/behavior_generation/trajectory_optimization/trajOpt.md)
+- [Trajectory stabilization](/software/ricMonkTrajOptStab/software/python/simulation/behavior_control/control.md)
 
 For operating the RicMonk, the following may serve as reference:
 - [Basic information](/docs/README.md)
-- [Brachiaiton realization](/tests/multipleBrachiationRealize.md)
-- [Other tests](/tests/README.md)
+- [Brachiaiton realization](/software/tests/multipleBrachiationRealize.md)
+- [Other tests](/software/tests/README.md)
 
 
 ## Safety Notes #
