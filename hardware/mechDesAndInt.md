@@ -21,7 +21,7 @@ the concept of interchangeable and reusable components, stands ready to adapt ef
 The schematic of the electrical diagram is shown in the following figure.
 
 <div align="center">
-<img width="800" src="/hardware/imagesAndGifs/electricalCircuit1.png" />
+<img width="800" src="/hardware/imagesAndGifs/electricalCircuit.png" />
 </div>
 
 

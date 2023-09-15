@@ -14,7 +14,7 @@ Raspberry Pi4([setup instructions](https://projects.raspberrypi.org/en/projects/
 
 Once all this is set up, there is no requirement to connect the Raspberry Pi to the peripherals anymore. It can be used via SSH.
 
-All information required for pi3hat configuration and commanding motors using tview has been detailed [here](https://git.hb.dfki.de/underactuated-robotics/acroMonk/-/blob/master/docs/instructions/pi3hat_and_rpi.md)
+Information required for pi3hat configuration and commanding motors using tview has been detailed below.
 
 # Moteus tools and Raspberry Pi
 
