@@ -1,0 +1,7 @@
+Kp_tail=[120.]
+Ki_tail=[1.]
+Kd_tail=[2.]
+Kp_arm2=[120.]
+Ki_arm2=[1.]
+Kd_arm2=[2.]
+Trajectory duration(seconds)=2.2719343302373227

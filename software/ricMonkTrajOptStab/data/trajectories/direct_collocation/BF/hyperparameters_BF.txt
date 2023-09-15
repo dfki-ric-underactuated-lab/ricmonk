@@ -1,0 +1,17 @@
+n=40
+tau_limit=4.0
+initial_state=(-0.5814944801006413, 0.5814944801006413, -2.5329708578116326, -0.633643, 0, 1.756502)
+theta_limit=[2.0943951023931953, 0.9, 2.8797932657906435]
+speed_limit=12
+ladder_distance=0.34
+final_state=(0.36, 0.03, 0.9, -1.2, 7.081415897589816, 1)
+theta2VelMultip=5
+theta3VelMultip=2
+K=100
+torque1_multip=60
+torque2_multip=50
+R=100
+time_panalization=0
+init_guess=[0.0, 4.0]
+max_timestep=0.5
+min_timestep=0.005
