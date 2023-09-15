@@ -14,12 +14,12 @@ The following provide theoretical information regarding the RicMonk:
 - [System dynamics](/hardware/dynamic.md)
 - [Mechatronic design and integration](/hardware/mechDesAndInt.md)
 - [Trajectory optimization](/software/ricMonkTrajOptStab/software/python/simulation/behavior_generation/trajectory_optimization/trajOpt.md)
-- [Trajectory stabilization](/software/ricMonkTrajOptStab/software/python/simulation/behavior_control/control.md)
+- [Trajectory stabilization](/software/ricMonkTrajOptStab/software/python/simulation/behavior_control/README.md)
 
 For operating the RicMonk, the following may serve as reference:
 - [Basic information](/docs/README.md)
-- [Brachiaiton realization](/software/tests/multipleBrachiationRealize.md)
-- [Other tests](/software/tests/README.md)
+- [Brachiaiton realization](/software/realSystemTests/multipleBrachiationRealize.md)
+- [Other tests](/software/realSystemTests/README.md)
 
 
 ## Safety Notes #
