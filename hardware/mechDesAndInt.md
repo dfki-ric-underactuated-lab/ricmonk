@@ -13,7 +13,7 @@ the concept of interchangeable and reusable components, stands ready to adapt ef
 
 
 <div align="center">
-<img width="600" src="imagesAndGifs/expVidGif.gif" />
+<img width="400" src="imagesAndGifs/expVidGif.gif" />
 </div>
 
 
@@ -34,7 +34,7 @@ All electronics of the AcroMonk are powered by a LiPo battery with the following
 - Power: $26.64 \text{ WH}$
 
 ### Raspberry Pi and pi3hat
-A Raspberry Pi4B([setup](../docs/README.md) is used as a processing unit for the robot, and the [mjbots pi3hat](https://mjbots.com/products/mjbots-pi3hat-r4-4b) is used for communication between the Raspberry Pi and the motors. The Inertia Measurement Unit(IMU)([usage](https://github.com/mjbots/pi3hat/blob/master/lib/python/examples/imu_example.py)) on the pi3hat is also used for state estimation purposes. The Raspberry Pi is connected, via WiFi using a Secure Shell Protocol(SSH), to the server that is operated by the user. The Raspberry Pi stores the desired trajectories, the applications to run the robot and help it track trajectories, and measured trajectories.
+A Raspberry Pi4B ([setup](../docs/README.md) is used as a processing unit for the robot, and the [mjbots pi3hat](https://mjbots.com/products/mjbots-pi3hat-r4-4b) is used for communication between the Raspberry Pi and the motors. The Inertia Measurement Unit (IMU)([usage](https://github.com/mjbots/pi3hat/blob/master/lib/python/examples/imu_example.py)) on the pi3hat is also used for state estimation purposes. The Raspberry Pi is connected, via WiFi using a Secure Shell Protocol (SSH), to the server that is operated by the user. The Raspberry Pi stores the desired trajectories, the applications to run the robot and help it track trajectories, and measured trajectories.
 
 
 ### Actuator
@@ -44,6 +44,6 @@ The actuators used in the RicMonk are the mjbots [qdd100](https://mjbots.com/col
 
 
 ### Emergency Stop
-It is necessary to have a safety switch to switch OFF the motors when the robot has an undesired erratic behaviour. To implement the safety switch, a Radio Communication Transmitter Protocol(TX protocol) has been employed to enable a safe operation of the robot. As a result, the electrical circuit includes a transmitter and a receiver. The wiring between the receiver connects to the motors via a 25 A relay, a diode and a 30 A electrical switch. To lower the voltage to the receiver(rated voltage: 6.5 V), a DC-DC converter is used. To avoid the DC-DC converter from getting burnt due to the high frequency voltage fluctuations when the circuit is switched ON, a series combination of a Varistor and a resistor is added to the circuit. This addition dampens the voltage fluctuations in the circuit. As
-a result, based on the command from the transmitter, the motors can be directly switched ON and OFF. The electrical switch only controls the functioning of the motors, so the computer(Raspberry Pi) is unaffected by the switching ON and OFF of the motors.
+It is necessary to have a safety switch to switch OFF the motors when the robot has an undesired erratic behaviour. To implement the safety switch, a Radio Communication Transmitter Protocol (TX protocol) has been employed to enable a safe operation of the robot. As a result, the electrical circuit includes a transmitter and a receiver. The wiring between the receiver connects to the motors via a 25 A relay, a diode and a 30 A electrical switch. To lower the voltage to the receiver (rated voltage: 6.5 V), a DC-DC converter is used. To avoid the DC-DC converter from getting burnt due to the high frequency voltage fluctuations when the circuit is switched ON, a series combination of a Varistor and a resistor is added to the circuit. This addition dampens the voltage fluctuations in the circuit. As
+a result, based on the command from the transmitter, the motors can be directly switched ON and OFF. The electrical switch only controls the functioning of the motors, so the computer (Raspberry Pi) is unaffected by the switching ON and OFF of the motors.
 

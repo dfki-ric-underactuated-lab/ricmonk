@@ -14,11 +14,11 @@
 ## Description
 This project offers an open-source and low-cost kit to test control algorithms for underactuated robots. 
 It introduces a three-link underactuated brachiation robot called **RicMonk** capable of bidirectional brachiation maneuver with passive grippers. 
-RicMonk has two Quasi-Direct-Drives(QDD) that allow dynamic and agile locomotion. 
+RicMonk has two Quasi-Direct-Drives (QDD) that allow dynamic and agile locomotion. 
 This project offers different control methods for trajectory stabilization which can be studied using the kit. Additionally, it provides a list of components, discusses best practices for implementation, and presents results from experiments with the simulator and the real system. This repository describes the hardware (CAD, Bill Of Materials (BOM), etc.) required to build the physical system and provides the software (URDF models, simulation, and controllers) to control it.
 
 
-## Paper
+## Research Paper
 
 The work is submitted to the IEEE International Conference on Robotics and Automation (ICRA 2024) and is currently under review. 
 
@@ -41,10 +41,10 @@ The CAD file is also provided on grabCAD.com. You can use the 3D viewer from the
  - [Display RicMonk in 3D](https://grabcad.com/library/ricmonk-a-three-link-underactuated-brachiation-robot-with-passive-grippers-1)
 ## Authors #
 
-* [Shivesh Kumar](https://robotik.dfki-bremen.de/en/about-us/staff/person/shku02) (Team Leader Mechanics and Control)
+* [Shivesh Kumar](https://robotik.dfki-bremen.de/en/about-us/staff/person/shku02) (Team Leader - Mechanics and Control)
 * [Mahdi Javadi](https://robotik.dfki-bremen.de/en/about-us/staff/person/maja04) (Project Supervisor, Hardware and Software Concepts, Trajectory Optimization and Stabilization)
 * Shourie S. Grama (Hardware and Software Maintainer, Design Optimization, Trajectory Optimization and Stabilization)
-* [Hossein Zamani Boroujeni](https://robotik.dfki-bremen.de/en/about-us/staff/person/hoza01) (Tail Design and Gripper Improvement. The credit for original design goes to [Daniel Pizzutilo](https://robotik.dfki-bremen.de/de/ueber-uns/mitarbeiter/dapi01) in [AcroMonk](https://github.com/dfki-ric-underactuated-lab/acromonk))
+* [Hossein Zamani Boroujeni](https://robotik.dfki-bremen.de/en/about-us/staff/person/hoza01) (Tail Design and Gripper Design Improvement. The credit for original arm and gripper design goes to [Daniel Pizzutilo](https://robotik.dfki-bremen.de/de/ueber-uns/mitarbeiter/dapi01) in [AcroMonk](https://github.com/dfki-ric-underactuated-lab/acromonk))
 
 Feel free to contact us if you have questions about the test bench. Enjoy!
 
@@ -84,9 +84,9 @@ This work has been released under the BSD 3-Clause License. Details and terms of
 
 ## Citation
 
-1. Grama S., Javadi M., Kumar S., Zamani H., Kirchner F., (2023). RicMonk: A Three-Link Brachiation Robot with Passive Grippers for Energy-efficient Brachiation. Submitted in: IEEE International Conference on Robotics and Automation (ICRA).
+1. Grama S., Javadi M., Kumar S., Zamani H., Kirchner F., (2024). RicMonk: A Three-Link Brachiation Robot with Passive Grippers for Energy-efficient Brachiation. Submitted in: IEEE International Conference on Robotics and Automation (ICRA).
 ```
-@article{2023_ICRA_ricmonk,
+@article{2024_ICRA_ricmonk,
 journal={RicMonk: A Three-Link Brachiation Robot with Passive Grippers for Energy-efficient Brachiation}, 
 author={Grama, Shourie S and Javadi, Mahdi and Kumar, Shivesh and Zamani Boroujeni, Hossein and Kirchner, Frank},
 note={submitted and it is currently under review}}
