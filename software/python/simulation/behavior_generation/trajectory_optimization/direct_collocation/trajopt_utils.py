@@ -48,9 +48,10 @@ def trajopt(
         plant,
         context,
         num_time_samples=n,
-        minimum_timestep=min_timestep,
-        maximum_timestep=max_timestep,
+        minimum_time_step=min_timestep,
+        maximum_time_step=max_timestep,
         input_port_index=plant.get_actuation_input_port().get_index(),
+
     )
     useRefTraj=hyper_parameters.useRefTraj
     dircol.AddEqualTimeIntervalsConstraints()
