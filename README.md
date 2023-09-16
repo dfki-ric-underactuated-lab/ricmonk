@@ -27,8 +27,8 @@ The work is submitted to the IEEE International Conference on Robotics and Autom
 The following provides theoretical information regarding the RicMonk:
 - [System dynamics](/hardware/dynamic.md)
 - [Mechatronic design and integration](/hardware/mechDesAndInt.md)
-- [Trajectory optimization](/software/software/python/simulation/behavior_generation/trajectory_optimization/README.md)
-- [Trajectory stabilization](/software/software/python/simulation/behavior_control/README.md)
+- [Trajectory optimization](/software/python/simulation/behavior_generation/trajectory_optimization/README.md)
+- [Trajectory stabilization](/software/python/simulation/behavior_control/README.md)
 - [Bill Of Materials BOM](/hardware/bills-of-materials.md)
 
 
