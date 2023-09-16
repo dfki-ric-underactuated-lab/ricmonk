@@ -4,7 +4,10 @@ This folder contains various files that can be used to test the functioning of R
 **Note:** With the current RicMonk, motor_9(motor ID = 9) is attached to the left arm, and motor_8(motor ID = 8) is attached to the right arm. The robot is said to be performing an odd brachiation if the left arm becomes the **stance arm**(the arm that holds onto the ladder bar as the rest of the robot swings) and the right arm becomes the **swing arm**(the arm the swings with the robot to help the robot brachiate forwards or backwards).
 
 **Note:** Zero position is the position when the **stance arm** is vertically up and grasping the ladder bar, while rest of the robot hangs due to gravity. As zero position, the tail and the **swing arm** are also hanging vertically downwards.
+
+<!---
 **ADD A PICTURE OF THE ROBOT IN ZERO POSITION, maybe**
+-->
 
 ## go-zero-pos.py
 This file is used to command a single motor(motor ID and the bus the motor is connected to are variables in the code) to rotate from position to position. If the motor is already in some non-zero position, by changing the `final_pos` to zero and running this file, the motor returns to zero position. This file may be running using the following:
@@ -15,10 +18,11 @@ python3 -E go-zero-pos.py
 ## imu_validation_active_test.py
 For testing the estimation of position and velocity of the unactuated joint using the IMU output, this code may be used. An assumption made is that an acroBot type set is used for this purpose, with the unactuated joint also attached to an actuator. The actuator attached to the unactuated joint is only used to validate the state estimation made using the IMU. The setup used is shown in the following image
 <div align="center">
-<img width="605" src="../../hardware/imagesAndGifs/pasActTestSetup.jpeg" />
+<img width="605" src="/hardware/imagesAndGifs/pasActTestSetup.jpeg" />
 </div>
-Since this is an active test, the setup is made to follow a trajectory and the tracking of the same serves a reference for validating the state estimation method. To run the file use:
-```
+Since this is an active test, the setup is made to follow a trajectory, and the tracking of the same serves as a reference for validating the state estimation method. To run the file, use the following command:
+
+```bash
 sudo -E python3 imu_validation_active_test.py
 ```
 
