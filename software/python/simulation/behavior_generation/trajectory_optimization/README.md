@@ -6,7 +6,7 @@
 ## Fixed-base model
 To optimize trajectories for brachiation, simplify the system, and improve the probability of finding optimal solutions, we use a fixed-base model of the robot as shown in the following figure.
 <div align="center">
-<img width="500" src="../../../../../../../data/model/ricMonkFullSchematic.png" />
+<img width="500" src="data/model/ricMonkFullSchematic.png" />
 </div>
 In such a model for the RicMonk, the joint between $arm_1$ and ladder bar at $\mathbf{(y_{c}, z_{c})}$ is a revolute joint(dotted circle in the figure). In reality, the arm in contact with the support bar can move if enough force is applied to the arm. Making use of such a model reduces the number of constraints to be imposed, hence simplifying the problem. However, the use of such a fixed-base model has its disadvantages. $arm_1$ cannot let go of the bar, hence trajectories where that happens may not be optimized using this model.
 
@@ -19,15 +19,24 @@ Formulation of the trajectory optimization problem is described in [here](formul
 The swing trajectories for these atomic behaviors are optimized and the animations are obtained as follows. To release the grasp of respective arms for forward or backward brachiation, feed-forward torque is applied.
 
 <!-- <div align="center">
-<img width="500" src="../../../../../../../data/model/stateMachine.png" />
+<img width="500" src="data/model/stateMachine.png" />
 </div> -->
 
 <div align="center">
-<img width="200" src="../../../../../../../hardware/imagesAndGifs/ZB_ini_gif.gif" >
-<img width="200" src="../../../../../../../hardware/imagesAndGifs/ZF_ini_gif.gif" >
-<img width="200" src="../../../../../../../hardware/imagesAndGifs/BF_ini_gif.gif" >
-<img width="200" src="../../../../../../../hardware/imagesAndGifs/FB_ini_gif.gif" >
+<img width="250" src="hardware/imagesAndGifs/zb.gif" >
+<img width="250" src="hardware/imagesAndGifs/zf.gif" >
+<img width="250" src="hardware/imagesAndGifs/bf.gif" >
+<img width="250" src="hardware/imagesAndGifs/fb.gif" >
 </div>
+
+<!---
+<div align="center">
+<img width="200" src="hardware/imagesAndGifs/ZB_ini_gif.gif" >
+<img width="200" src="hardware/imagesAndGifs/ZF_ini_gif.gif" >
+<img width="200" src="hardware/imagesAndGifs/BF_ini_gif.gif" >
+<img width="200" src="hardware/imagesAndGifs/FB_ini_gif.gif" >
+</div>
+-->
 
 ## Operation
 The folder **direct_collocation** contains files that provide the respective hyper-parameters for optimizing trajectories. The file **simulateTrajOpt.py** is to run for optimizing trajectories. Input the name of the trajectory (ZB, ZF, BF, FB) and the ladder bar distance (default = 0.34m). The optimized trajectories are saved in the folder with the name of the maneuver in [here](/data/trajectories/direct_collocation/), according to the maneuver.
