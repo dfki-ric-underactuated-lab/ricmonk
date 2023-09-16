@@ -2,7 +2,7 @@
 
 ## Forward brachiation
 The following steps help in realizing the multiple brachiation motion, in the forward direction, on the RicMonk:
-- Trajectories stabilized are stored in **../data/trajectories/closed_loop** with respect to the current file
+- Trajectories stabilized are stored in [here](/data/trajectories/closed_loop) with respect to the current file
 - The program to be run for executing multiple brachiaitions in the forward direction is **test_multiple_brachiations.py**
 - Ensure that RicMonk is on the ladder, with left arm on the ladder, while right arm and the tail are vertical
 - Ensure that all the electrical connections are properly made, and that the motors are turned ON using the transmitter
