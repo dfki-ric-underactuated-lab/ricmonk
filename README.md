@@ -13,26 +13,26 @@
 
 ## Description
 This project offers an open-source and low-cost kit to test control algorithms for underactuated robots. 
-It introduces a three-lilnk underactuated brachiation robot called **RicMonk** capable of bidirectional brachiation maneuver with passive grippers. 
-RicMonk has two Quasi-Direct-Drives(QDD) that allow a dynamic and agile locomotion. 
-This project offers different control methods for trajectory stabilization which can be studied using the kit. Additionally, it provides a list of components, discusses best practices for implementation, and presents results from experiments with the simulator and the real system. This repository describes the hardware (CAD, Bill Of Materials (BOM) etc.) required to build the physical system and provides the software (URDF models, simulation and controllers) to control it.
+It introduces a three-link underactuated brachiation robot called **RicMonk** capable of bidirectional brachiation maneuver with passive grippers. 
+RicMonk has two Quasi-Direct-Drives(QDD) that allow dynamic and agile locomotion. 
+This project offers different control methods for trajectory stabilization which can be studied using the kit. Additionally, it provides a list of components, discusses best practices for implementation, and presents results from experiments with the simulator and the real system. This repository describes the hardware (CAD, Bill Of Materials (BOM), etc.) required to build the physical system and provides the software (URDF models, simulation, and controllers) to control it.
 
 
 ## Paper
 
-The work is submitted in IEEE International Conference on Robotics and Automation (ICRA 2023) and is currently under review. 
+The work is submitted to the IEEE International Conference on Robotics and Automation (ICRA 2024) and is currently under review. 
 
 ## Documentation
 
-The following provide theoretical information regarding the RicMonk:
+The following provides theoretical information regarding the RicMonk:
 - [System dynamics](/hardware/dynamic.md)
 - [Mechatronic design and integration](/hardware/mechDesAndInt.md)
-- [Trajectory optimization](/software/ricMonkTrajOptStab/software/python/simulation/behavior_generation/trajectory_optimization/trajOpt.md)
-- [Trajectory stabilization](/software/ricMonkTrajOptStab/software/python/simulation/behavior_control/README.md)
+- [Trajectory optimization](/software/software/python/simulation/behavior_generation/trajectory_optimization/README.md)
+- [Trajectory stabilization](/software/software/python/simulation/behavior_control/README.md)
 - [Bill Of Materials BOM](/hardware/bills-of-materials.md)
 
 
-For operating the RicMonk, the following may serve as reference:
+For operating the RicMonk, the following may serve as a reference:
 - [Basic information](/docs/README.md)
 - [Brachiaiton realization](/software/python/realSystemTests/multipleBrachiationRealize.md)
 - [Software Guide](/software/python/README.md)
@@ -61,9 +61,9 @@ Feel free to contact us if you have questions about the test bench. Enjoy!
 
 When working with a real system be careful and mind the following safety measures:
 
-* Brushless motors can be very powerful, moving with tremendous force and speed. Always limit the range of motion, power, force and speed using configurable parameters, currently limited supplies, and mechanical design.
+* Brushless motors can be very powerful, moving with tremendous force and speed. Always limit the range of motion, power, force, and speed using configurable parameters, currently limited supplies, and mechanical design.
 
-* The robot must be placed in a ladder bar cage and kept at least one-meter distance from the acromonk in case of operation.
+* The robot must be placed in a ladder bar cage and kept at least one distance from the acromonk in case of operation.
 
 * Make sure you have access to an emergency stop while doing experiments. Be extra careful while operating in the pure torque control loop.
 
@@ -80,7 +80,7 @@ This work has been supported by the M-RoCK (FKZ01IW21002) and VeryHuman (FKZ01IW
 
 ## License
 
-This work has been released under the BSD 3-Clause License. Details and terms of use are specified in the LICENSE file within this repository. Note that we do not publish third-party software, hence software packages from other developers are released under their very own terms and conditions, e.g. Stable baselines (MIT License) and Tensorflow (Apache License v2.0). If you install third-party software packages along with this repo ensure that you follow each individual license agreement.
+This work has been released under the BSD 3-Clause License. Details and terms of use are specified in the LICENSE file within this repository. Note that we do not publish third-party software, hence software packages from other developers are released under their very own terms and conditions, e.g. Stable Baselines (MIT License) and Tensorflow (Apache License v2.0). If you install third-party software packages along with this repo ensure that you follow each license agreement.
 
 ## Citation
 
