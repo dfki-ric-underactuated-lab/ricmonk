@@ -4,4 +4,4 @@ Kd_tail=[2.]
 Kp_arm2=[120.]
 Ki_arm2=[1.]
 Kd_arm2=[2.]
-Trajectory duration(seconds)=2.916252878938341
+Trajectory duration(seconds)=2.916252916859086
