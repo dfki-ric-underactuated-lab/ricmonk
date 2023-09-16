@@ -11,7 +11,6 @@ from utils import (
     send_rad_command,
     read_imu_data,
     state_estimation,
-    state_estimation_even,
     plot_custom_data_with_dir,
     save_data,
     read_data,
@@ -35,13 +34,13 @@ TAU_LIMIT = 4
 
 TEST = sys.argv[1]
 assert TEST in ["tvlqr", "pd", "rl", "ff_replay"]
-FILE_NAME = sys.argv[2]
-TRAJ = FILE_NAME    #These three lines are written to get the trajectory type
-TRAJ = TRAJ.split('_')
-TRAJ = TRAJ[0]
+# FILE_NAME = sys.argv[2]
+# TRAJ = FILE_NAME    #These three lines are written to get the trajectory type
+# TRAJ = TRAJ.split('_')
+TRAJ = sys.argv[5]
 print(f"traj: {TRAJ}")
-BUS_NUMBER = int(sys.argv[3])
-motorIDtext = sys.argv[4]
+BUS_NUMBER = int(sys.argv[2])
+motorIDtext = sys.argv[3]
 #print(motorIDtext)
 #print(motorIDtext[1])
 MOTOR_ID = [int(motorIDtext[1]), int(motorIDtext[3])]
@@ -854,20 +853,20 @@ def catch(
 
 def swing(brach, servo_tail, servo_phi, init_euler_xyz, imu, t0, controller):#(brach, servo, init_euler_xyz, imu, t0_experiment, controller):
     meas_dt = 0
-    sign = 1 if brach == "odd" else -1  #Thought this was not necessary, but necessary for even brachiations
+    sign = 1 if brach == "odd" else -1
     t = 0
     pr = imu
     swing_tau_limit = 3
-    arm1_pos = sign * NOMINAL_PCWS.arm1_des_Ang_pos_pcw.get_value(t)
-    arm1_vel = sign * NOMINAL_PCWS.arm1_des_Ang_vel_pcw.get_value(t)
-    tail_pos = sign * NOMINAL_PCWS.tail_des_Ang_pos_pcw.get_value(t)
-    tail_vel = sign * NOMINAL_PCWS.tail_des_Ang_vel_pcw.get_value(t)    
-    phi_pos = sign * NOMINAL_PCWS.phi_des_Ang_pos_pcw.get_value(t)
-    phi_vel = sign * NOMINAL_PCWS.phi_des_Ang_vel_pcw.get_value(t)
-    arm2_pos = sign * NOMINAL_PCWS.arm2_des_Ang_pos_pcw.get_value(t)
-    arm2_vel = sign * NOMINAL_PCWS.arm2_des_Ang_vel_pcw.get_value(t)    
-    tail_tau = sign * NOMINAL_PCWS.tail_des_torque_tvlqr_pcw.get_value(t)
-    phi_tau = sign * NOMINAL_PCWS.phi_des_torque_tvlqr_pcw.get_value(t)
+    arm1_pos = NOMINAL_PCWS.arm1_des_Ang_pos_pcw.get_value(t)
+    arm1_vel = NOMINAL_PCWS.arm1_des_Ang_vel_pcw.get_value(t)
+    tail_pos = NOMINAL_PCWS.tail_des_Ang_pos_pcw.get_value(t)
+    tail_vel = NOMINAL_PCWS.tail_des_Ang_vel_pcw.get_value(t)    
+    phi_pos = NOMINAL_PCWS.phi_des_Ang_pos_pcw.get_value(t)
+    phi_vel = NOMINAL_PCWS.phi_des_Ang_vel_pcw.get_value(t)
+    arm2_pos = NOMINAL_PCWS.arm2_des_Ang_pos_pcw.get_value(t)
+    arm2_vel = NOMINAL_PCWS.arm2_des_Ang_vel_pcw.get_value(t)
+    tail_tau = NOMINAL_PCWS.tail_des_torque_tvlqr_pcw.get_value(t)
+    phi_tau = NOMINAL_PCWS.phi_des_torque_tvlqr_pcw.get_value(t)
     
     meas_arm1_pos = arm1_pos
     meas_arm1_vel = arm1_vel
@@ -888,16 +887,18 @@ def swing(brach, servo_tail, servo_phi, init_euler_xyz, imu, t0, controller):#(b
         if t > DATA_DES.des_time[-1]:
             print("time=", t)
             break
-        arm1_des_pos = sign * NOMINAL_PCWS.arm1_des_Ang_pos_pcw.get_value(t)
-        arm1_des_vel = sign * NOMINAL_PCWS.arm1_des_Ang_vel_pcw.get_value(t)
-        tail_des_pos = sign * NOMINAL_PCWS.tail_des_Ang_pos_pcw.get_value(t)
-        tail_des_vel = sign * NOMINAL_PCWS.tail_des_Ang_vel_pcw.get_value(t)    
-        phi_des_pos = sign * NOMINAL_PCWS.phi_des_Ang_pos_pcw.get_value(t)   
+        arm1_des_pos = NOMINAL_PCWS.arm1_des_Ang_pos_pcw.get_value(t)
+        arm1_des_vel = NOMINAL_PCWS.arm1_des_Ang_vel_pcw.get_value(t)
+        tail_des_pos = NOMINAL_PCWS.tail_des_Ang_pos_pcw.get_value(t)
+        tail_des_vel = NOMINAL_PCWS.tail_des_Ang_vel_pcw.get_value(t)    
+        phi_des_pos = sign * NOMINAL_PCWS.phi_des_Ang_pos_pcw.get_value(t)   #Not sure if this sign thing is true. But seems true. During multiple brachiations, the roles of the arms switch
         phi_des_vel = sign * NOMINAL_PCWS.phi_des_Ang_vel_pcw.get_value(t)
-        arm2_des_pos = sign * NOMINAL_PCWS.arm2_des_Ang_pos_pcw.get_value(t)
-        arm2_des_vel = sign * NOMINAL_PCWS.arm2_des_Ang_vel_pcw.get_value(t)
-        tail_des_tau = sign * NOMINAL_PCWS.tail_des_torque_tvlqr_pcw.get_value(t)
-        phi_des_tau = sign * NOMINAL_PCWS.phi_des_torque_tvlqr_pcw.get_value(t)
+        arm2_des_pos = NOMINAL_PCWS.arm2_des_Ang_pos_pcw.get_value(t)
+        arm2_des_vel = NOMINAL_PCWS.arm2_des_Ang_vel_pcw.get_value(t)
+        tail_des_tau = NOMINAL_PCWS.tail_des_torque_tvlqr_pcw.get_value(t)
+        phi_des_tau = NOMINAL_PCWS.phi_des_torque_tvlqr_pcw.get_value(t)
+        
+        
         des_state = np.array([[arm1_des_pos], [tail_des_pos], [phi_des_pos], [arm1_des_vel], [tail_des_vel], [phi_des_vel]])
 
         motor_params = motor_test_parameters(
@@ -935,6 +936,7 @@ def swing(brach, servo_tail, servo_phi, init_euler_xyz, imu, t0, controller):#(b
         #        watchdog_timeout=0.05,
         #    )
         #)
+        #DID YOU CHANGE THE 'SEND_RAD_COMMAND' FUNCTION TO 'SEND_RAD_COMMAND_W_CHECK' IN KICKBACK AND CATCH FUNCTIONS
         (meas_pos_tail, meas_vel_tail, meas_tau_tail, meas_pos_phi, meas_vel_phi, meas_tau_phi) = run(
             send_rad_command_w_check(
                 controller_obj_tail=servo_tail,
@@ -970,12 +972,13 @@ def swing(brach, servo_tail, servo_phi, init_euler_xyz, imu, t0, controller):#(b
 
         else:
             #state = run(state_estimation_v2(pr=imu))  #In RicMonk, there's no need for two different ways of state estimation.
-            arm1_pos, arm1_vel, raw_imu_pos, raw_imu_vel = run(state_estimation_even(
+            arm1_pos, arm1_vel, raw_imu_pos, raw_imu_vel = run(state_estimation(
                 pr=pr, pos_tail=meas_pos_tail, vel_tail=meas_vel_tail
             ))
         #(arm1_pos, arm1_vel, raw_imu_pos, raw_imu_vel) = state
         meas_state = np.array([[arm1_pos], [meas_pos_tail], [meas_pos_phi], [arm1_vel], [meas_vel_tail], [meas_vel_phi]])
         K = motor_params.K_tvlqr
+        #print(f'Swing index {INDEX[0]} over')
 
         # store measured data
         data_append(
@@ -1023,8 +1026,8 @@ def swing(brach, servo_tail, servo_phi, init_euler_xyz, imu, t0, controller):#(b
         )
         INDEX[0] += 1
         meas_dt = time.time() - t_iteration
-    print(f"swing loop control frequency = {1/meas_dt}")
     print(f"Swing end index: {INDEX[0]}")
+    print(f"swing loop control frequency = {1/meas_dt}")
 
 
 def brachiation(
@@ -1038,7 +1041,7 @@ def brachiation(
 	    print(
 	        f"[kickback] ibrach:{ibrach} brach:{brach} time.time()-t0:{time.time()-t0}"
 	    )
-	    kickback("even", 49, -4.3, -2.2, 6.0, servo_tail, servo_phi, init_euler_xyz, imu, t0)   #PASSED "odd" DIRECTLY AS AN ARGUMENT INSTEAD OF VARIABLE 'brach'
+	    kickback("odd", 49, 4.3, 2.2, 6.0, servo_tail, servo_phi, init_euler_xyz, imu, t0)   #PASSED "odd" DIRECTLY AS AN ARGUMENT INSTEAD OF VARIABLE 'brach'
 	    # loop.exit()
 	    print(
 	        f"[swing] ibrach:{ibrach} brach:{brach} time.time()-t0:{time.time()-t0}"
@@ -1074,7 +1077,7 @@ def brachiation(
 	    print(
 	        f"[kickback] ibrach:{ibrach} brach:{brach} time.time()-t0:{time.time()-t0}"
 	    )
-	    kickback("odd", 49, 2.17, 6.5, 8.0, servo_tail, servo_phi, init_euler_xyz, imu, t0)    #PASSED "odd" DIRECTLY AS AN ARGUMENT INSTEAD OF VARIABLE 'brach'
+	    kickback("odd", 49, 2.17, 6.5, 10.0, servo_tail, servo_phi, init_euler_xyz, imu, t0)    #PASSED "odd" DIRECTLY AS AN ARGUMENT INSTEAD OF VARIABLE 'brach'
 	    # loop.exit()
 	    print(
 	        f"[swing] ibrach:{ibrach} brach:{brach} time.time()-t0:{time.time()-t0}"
@@ -1127,10 +1130,10 @@ def brachiation(
 	    #brach, n, torque_tail, torque_phi, tau_limit, servo_tail, servo_phi, init_euler_xyz, imu, t0_experiment
 	    #catch(
 	    #    brach=brach,
-	    #    idling_time=0.0,
-	    #    catch_duration=0.0,#0.2 automatic detach of battry swing
+	    #    idling_time=0.3,
+	    #    catch_duration=0.3,#0.2 automatic detach of battry swing
 	    #    tau_tail=-0.0,
-	    #    tau_phi=-0.0,
+	    #    tau_phi=-1.5,
 	    #    tau_limit=6,
 	    #    servo_tail=servo_tail, 
 	    #    servo_phi=servo_phi,
@@ -1191,8 +1194,8 @@ def imu_reset(con, sleep_time=3):
 
 async def init():
     transport = moteus_pi3hat.Pi3HatRouter(servo_bus_map={BUS_NUMBER:MOTOR_ID})
-    servo_tail = moteus.Controller(id=MOTOR_ID[0], transport=transport)  #Interchanging the motor IDs to test even brachiations
-    servo_phi = moteus.Controller(id=MOTOR_ID[1], transport=transport)
+    servo_tail = moteus.Controller(id=MOTOR_ID[1], transport=transport)
+    servo_phi = moteus.Controller(id=MOTOR_ID[0], transport=transport)
     imu = imu_reset(IMU_CONFIG_ODD)  # imu_reset(IMU_CONFIG_EVEN)#
     _, _, _, init_euler_xyz = await read_imu_data(imu)
     await servo_tail.set_stop()
@@ -1207,14 +1210,13 @@ async def init():
 
 def main(loop):
     nbrachiation = int(os.getenv("NBRACH", "1"))
-    try:   
+    try:
         for ibrachiation in range(
             1, nbrachiation + 1
         ):  # To test one brach with IMU arm attach, set range 2
             print(f"[main] ibrachiation:{ibrachiation}")
-	    #changed the below line to test even brachiations
 
-            brach = "even" if ibrachiation % 2 == 0 else "even"
+            brach = "even" if ibrachiation % 2 == 0 else "odd"
             print(f"Brach: {brach}")
 
             if (
@@ -1261,13 +1263,13 @@ def main(loop):
         
         #answer='n'
         answer = input("Should I save results?")
-        if answer == 'y':
+        if answer == 'y' or answer == 'Y':
             directory = make_results_directory_test_traj(TEST, TRAJ, brach)
             # Save Trajectory to a csv file to be sent to the motor.
             save_data(valid_data, directory + "/measured.csv")
             plot_custom_data_with_dir_meas(directory, valid_data, show=True)
-
-
+            
+print("DID YOU CHANGE THE 'SEND_RAD_COMMAND' FUNCTION TO 'SEND_RAD_COMMAND_W_CHECK' IN KICKBACK AND CATCH FUNCTIONS")
 zero_offset_two_motors(BUS_NUMBER, MOTOR_ID)
 #if input("Press enter"):
 #    exit()

@@ -42,11 +42,13 @@ assert TEST in ["tvlqr", "pd", "rl", "ff_replay"]
 # TRAJ = TRAJ.split('_')
 # TRAJ = TRAJ[0]
 # print(f"traj: {TRAJ}")
-BUS_NUMBER = int(sys.argv[3])
-motorIDtext = sys.argv[4]
+BUS_NUMBER = int(sys.argv[2])
+motorIDtext = sys.argv[3]
 # print(motorIDtext)
 # print(motorIDtext[1])
 MOTOR_ID = [int(motorIDtext[1]), int(motorIDtext[3])]
+DIRECTION = sys.argv[4]
+#MOTOR_ID = [8, 13]
 # print(MOTOR_ID)
 
 
@@ -54,7 +56,16 @@ MOTOR_ID = [int(motorIDtext[1]), int(motorIDtext[3])]
 IMU_CONFIG_ODD = (0, 90, 180)
 DATA = prepare_store_data(n=8000)
 
-FULL_STEP_FILE_NAME = sys.argv[2]
+if DIRECTION == 1: #Forward brachiation
+	FULL_STEP_FILE_NAME = "BF_tvlqr.csv"
+	HALF_STEP_FILE_NAME = "ZF_tvlqr.csv"
+	brachDirection = 1
+elif DIRECTION == -1: #Backward brachiation
+	FULL_STEP_FILE_NAME = "FB_tvlqr.csv"
+	HALF_STEP_FILE_NAME = "ZB_tvlqr.csv"
+	brachDirection = -1
+
+# FULL_STEP_FILE_NAME = sys.argv[2]
 FULL_STEP_CSV_DATA = read_data(
     folder=FOLDER_NAME, file=FULL_STEP_FILE_NAME, up_directory=1
 )
@@ -64,7 +75,7 @@ FULL_STEP_DATA_DES = prepare_des_data(
 FULL_STEP_NOMINAL_PCWS = create_nominal_pcws(FULL_STEP_DATA_DES)
 print(f"Read {sys.argv[2]} for full step trajectory")
 
-HALF_STEP_FILE_NAME = sys.argv[5]
+# HALF_STEP_FILE_NAME = sys.argv[5]
 HALF_STEP_CSV_DATA = read_data(
     folder=FOLDER_NAME, file=HALF_STEP_FILE_NAME, up_directory=1
 )
@@ -259,11 +270,11 @@ def run(f):
 
 # REPLACED 'kb_cond' FUNCTION WITH 'kb_cond' FROM THE LADDER BAR RELEASE TESTS
 def kb_cond(brach, t, phi_vel, tail_vel):
-    return (
-        (t < 0.05 or -1.3 < tail_vel)
-        if brach == "even"
-        else (t < 0.05 or abs(phi_vel) < 1.3)
-    )
+    # return (
+    #     (t < 0.05 or -1.3 < tail_vel)
+    #     if brach == "even"  #COMMENTING THIS AFTER BACKWARD BRACHIATION TEST. CHECK FOR FORWARD BRACHIATION
+    # )
+    return ((t < 0.05 or abs(phi_vel) < 1.0))
 
 
 async def kb_state_estimate(brach, pr, tail_pos, tail_vel):
@@ -319,13 +330,13 @@ async def Kickback(
     )
 
     if brach == "odd":
-        meas_pos_tail = meas_pos_tail + (((i - 1) / 2) * 2 * math.pi)
-        meas_pos_phi = meas_pos_phi - (((i - 1) / 2) * 2 * math.pi)
+        meas_pos_tail = meas_pos_tail + ((((i - 1) / 2) * 2 * math.pi) * brachDirection)
+        meas_pos_phi = meas_pos_phi + (-(((i - 1) / 2) * 2 * math.pi) * brachDirection)
     else:
         meas_pos_tail = (
-            meas_pos_tail - ((i/2) * math.pi) #afterOdd_finPhiPos + afterOdd_finTailPos
+            meas_pos_tail + (-((i-1) * math.pi) * brachDirection) #afterOdd_finPhiPos + afterOdd_finTailPos
         )
-        meas_pos_phi = meas_pos_phi + ((i/2) * math.pi) #afterOdd_finTailPos + afterOdd_finPhiPos
+        meas_pos_phi = meas_pos_phi + (((i-1) * math.pi) * brachDirection) #afterOdd_finTailPos + afterOdd_finPhiPos
 
     while kb_cond(brach, t, meas_vel_phi, meas_vel_tail):
         # print(f't: {t}')
@@ -386,8 +397,8 @@ async def Kickback(
         )
 
         if brach == "odd":
-            meas_pos_tail = meas_pos_tail + (((i - 1) / 2) * 2 * math.pi)
-            meas_pos_phi = meas_pos_phi - (((i - 1) / 2) * 2 * math.pi)
+            meas_pos_tail = meas_pos_tail + ((((i - 1) / 2) * 2 * math.pi) * brachDirection)
+            meas_pos_phi = meas_pos_phi + (-(((i - 1) / 2) * 2 * math.pi) * brachDirection)
             # arm1_pos, arm1_vel, raw_imu_pos, raw_imu_vel = run(
             #     state_estimation(
             #         pr=pr, pos_tail=meas_pos_tail, vel_tail=meas_vel_tail
@@ -406,11 +417,11 @@ async def Kickback(
 
         else:
             meas_pos_tail = (
-                meas_pos_tail - ((i/2) * math.pi) #afterOdd_finPhiPos + afterOdd_finTailPos
+                meas_pos_tail + (-((i-1) * math.pi) * brachDirection) #afterOdd_finPhiPos + afterOdd_finTailPos
             )
-            meas_pos_phi = (
-                meas_pos_phi + ((i/2) * math.pi) #afterOdd_finTailPos + afterOdd_finPhiPos
-            )
+            #print(f"blah: {(-brachDirection * ((i/2) * math.pi))}")
+            #print(f"HOOO: {(-((i/2) * math.pi) * brachDirection)}")
+            meas_pos_phi = meas_pos_phi + (((i-1) * math.pi) * brachDirection) #afterOdd_finTailPos + afterOdd_finPhiPos
             # arm1_pos, arm1_vel, raw_imu_pos, raw_imu_vel = run(
             #     state_estimation_even(
             #         pr=pr, pos_tail=meas_pos_tail, vel_tail=meas_vel_tail
@@ -1001,8 +1012,8 @@ def swing(
         )
 
         if brach == "odd":
-            meas_pos_tail = meas_pos_tail + (((i - 1) / 2) * 2 * math.pi)
-            meas_pos_phi = meas_pos_phi - (((i - 1) / 2) * 2 * math.pi)
+            meas_pos_tail = meas_pos_tail + ((((i - 1) / 2) * 2 * math.pi) * brachDirection)
+            meas_pos_phi = meas_pos_phi + (-(((i - 1) / 2) * 2 * math.pi) * brachDirection)
             arm1_pos, arm1_vel, raw_imu_pos, raw_imu_vel = run(
                 state_estimation(
                     pr=pr, pos_tail=meas_pos_tail, vel_tail=meas_vel_tail
@@ -1013,11 +1024,9 @@ def swing(
 
         else:
             meas_pos_tail = (
-                meas_pos_tail - ((i/2) * math.pi) #afterOdd_finPhiPos + afterOdd_finTailPos
+                meas_pos_tail + (-((i-1) * math.pi) * brachDirection) #afterOdd_finPhiPos + afterOdd_finTailPos
             )
-            meas_pos_phi = (
-                meas_pos_phi + ((i/2) * math.pi) #afterOdd_finTailPos + afterOdd_finPhiPos
-            )
+            meas_pos_phi = meas_pos_phi + (((i-1) * math.pi) * brachDirection) #afterOdd_finTailPos + afterOdd_finPhiPos
             arm1_pos, arm1_vel, raw_imu_pos, raw_imu_vel = run(
                 state_estimation_even(
                     pr=pr, pos_tail=meas_pos_tail, vel_tail=meas_vel_tail
@@ -1121,8 +1130,8 @@ def brachiation(
         kickback(
             brach,
             49,
-            4.3,
-            2.2,
+            4.8,
+            2.8,
             TAU_LIMIT_KB,
             servo_tail,
             servo_phi,
@@ -1167,7 +1176,7 @@ def brachiation(
             brach,
             49,
             2.17,
-            6.5,
+            6.3,
             # 10.0,
             TAU_LIMIT_KB,
             servo_tail,
@@ -1284,14 +1293,21 @@ async def init():
         controller = None
     return servo_9, servo_8, imu, init_euler_xyz, controller
 
-async def stopMotors(servo_tail, servo_phi):
+async def stopMotors(servo_tail, servo_phi, waitTime):
     await servo_tail.set_stop()
     await servo_phi.set_stop()
     print('Motors disabled and sleeping for a couple of seconds' )
     print("")
-    await asyncio.sleep(1)
+    await asyncio.sleep(waitTime)
     return True
 
+# brachDirection = 1 #default direction is 
+# checkDirection = input("Is the direction of brachiation forward?(y/n)")
+# print(f"Check direction: {checkDirection}")
+# if checkDirection == 'y':
+#     brachDirection = 1
+# else:
+#     brachDirection = -1
 
 def main(loop):
     nbrachiation = int(os.getenv("NBRACH", "1"))
@@ -1299,6 +1315,7 @@ def main(loop):
     servo_8 = None  # Do we need these lines?
     afterOdd_finTailPos = 0
     afterOdd_finPhiPos = 0
+    waitTime = 1
 
     try:
         for ibrachiation in range(
@@ -1333,12 +1350,26 @@ def main(loop):
                 servo_tail = servo_8
                 servo_phi = servo_9
             gap_start_time = time.time()
-            traj = input("What maneuver would you like me to execute?").upper()
-            assert traj in ["ZF", "BF", "FB", "ZB"]
+            # traj = input("What maneuver would you like me to execute?").upper()
+            # assert traj in ["ZF", "BF", "FB", "ZB"]
+            if brachDirection == -1:
+                if ibrachiation == 1:
+                    waitTime = 3
+                    traj = "ZB"
+                elif ibrachiation != 1:
+                    waitTime = 1
+                    traj = "FB"
+            if brachDirection == 1:
+                if ibrachiation == 1:
+                    waitTime = 1
+                    traj = "ZF"
+                elif ibrachiation != 1:
+                    waitTime = 1
+                    traj = "BF"
             gap_end_time = time.time()
             if ibrachiation != 1:
-                t0 = t0 + (gap_end_time - gap_start_time)
-		
+                t0 = t0 + (gap_end_time - gap_start_time) +waitTime
+        
             afterOdd_finTailPos, afterOdd_finPhiPos = brachiation(
                 loop,
                 ibrachiation,
@@ -1353,7 +1384,7 @@ def main(loop):
                 afterOdd_finTailPos,
                 afterOdd_finPhiPos,
             )
-            motorStop = loop.run_until_complete(stopMotors(servo_tail, servo_phi))
+            motorStop = loop.run_until_complete(stopMotors(servo_tail, servo_phi, waitTime))
     # except Exception as ex:
     # print("[main] unhanlded exception:", ex)
     finally:
@@ -1381,9 +1412,9 @@ def main(loop):
             plot_custom_data_with_dir_meas(directory, valid_data, show=True)
 
 
-print(
-    "DID YOU CHANGE THE 'SEND_RAD_COMMAND' FUNCTION TO 'SEND_RAD_COMMAND_W_CHECK' IN KICKBACK AND CATCH FUNCTIONS"
-)
+# print(
+#     "DID YOU CHANGE THE 'SEND_RAD_COMMAND' FUNCTION TO 'SEND_RAD_COMMAND_W_CHECK' IN KICKBACK AND CATCH FUNCTIONS"
+# )
 zero_offset_two_motors(BUS_NUMBER, MOTOR_ID)
 loop = asyncio.get_event_loop()
 main(loop)
