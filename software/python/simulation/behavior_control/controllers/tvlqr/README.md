@@ -1,4 +1,4 @@
-#  Time-varying Linear Quadrativ Regulator (TVLQR)
+#  Time-varying Linear Quadratic Regulator (TVLQR)
 
 ## Theory
 
@@ -24,7 +24,7 @@ TVLQR minimizes a time-varying cost function, $J(t)$, as it optimizes a varying 
     J(t) = \mathbf{x}^T(t_f) \mathbf{Q}_f \mathbf{x}(t_f) + \int_{t_0}^{t_f} \left[ \mathbf{x}^T(t) \mathbf{Q}(t) \mathbf{x}(t) + \mathbf{u}^T(t) \mathbf{R}(t) \mathbf{u}(t) \right] dt
 \end{equation*}
 ```
-The optimal time-varying feedback matrix $\mathbf{K}(t)$ is obtained by solving the time-varying Riccati equation, that is obtained by substituting the control law into the linearized dynamics equation.
+The optimal time-varying feedback matrix $\mathbf{K}(t)$ is obtained by solving the time-varying Riccati equation, which is obtained by substituting the control law into the linearized dynamics equation.
 ```math
 \begin{equation*}
     \mathbf{u}(t) = -\mathbf{K}(t)\overline{\mathbf{x}}(t)
@@ -36,7 +36,7 @@ The optimal time-varying feedback matrix $\mathbf{K}(t)$ is obtained by solving 
 \end{equation*}
 ```
 
-Like the LQR, TVLQR relies on the accuracy of the mathematical model. Mismatch between the mathematical model and robot could impact the performance of the real system. Approximation of highly non-linear systems could also add challenges to the system. However, by considering the dynamics of the robot, the TVLQR allows accurate control with error compensation around the region of control. Being a model-based controller, TVLQR adds to the advantages of the LQR as it extends to time-varying systems.
+Like the LQR, TVLQR relies on the accuracy of the mathematical model. Mismatch between the mathematical model and the robot could impact the performance of the real system. Approximation of highly non-linear systems could also add challenges to the system. However, by considering the dynamics of the robot, the TVLQR allows accurate control with error compensation around the region of control. Being a model-based controller, TVLQR adds to the advantages of the LQR as it extends to time-varying systems.
 
 
 ## Dependencies
