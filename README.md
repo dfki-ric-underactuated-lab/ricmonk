@@ -34,8 +34,8 @@ The following provide theoretical information regarding the RicMonk:
 
 For operating the RicMonk, the following may serve as reference:
 - [Basic information](/docs/README.md)
-- [Brachiaiton realization](/software/realSystemTests/multipleBrachiationRealize.md)
-- [Other tests](/software/realSystemTests/README.md)
+- [Brachiaiton realization](/software/python/realSystemTests/multipleBrachiationRealize.md)
+- [Software Guide](/software/python/README.md)
 
 The CAD file is also provided on grabCAD.com. You can use the 3D viewer from their website to display the 3D model directly within your browser.
  - [Display RicMonk in 3D](https://grabcad.com/library/ricmonk-a-three-link-underactuated-brachiation-robot-with-passive-grippers-1)
