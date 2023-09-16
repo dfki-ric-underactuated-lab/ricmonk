@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/689729904.svg)](https://zenodo.org/badge/latestdoi/689729904)
+
 <div align="center">
 
 # RicMonk: A Three-Link Brachiation Robot with Passive Grippers
