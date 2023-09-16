@@ -14,9 +14,17 @@ The study on [AcroMonk](https://arxiv.org/abs/2305.08373), a two-linked brachiat
 
 Formulation of the trajectory optimization problem is described in [here](formulation.md)
 
+## Gripper Heuristics
+Grasp constitutes the action of the robot swing arm hooking onto the surface of the ladder bar, whereas release constitutes the action of the robot swing arm letting go of the ladder bar. Trajectory optimization as [formulated](formulation.md) does not include grasp and release actions, as it does not consider the contact dynamics of the system. As a result, trajectories are optimized from the time instant after the swing arm would have performed the release action to the moment before the swing arm performs the grasp action. These trajectories are called atomic behaviors. Generally, the actions of the swing arm performing release and grasp require the application of a feed-forward torque to the robot's motors. In the case of RicMonk, the weight of the robot and the velocity of the approach of the swing arm toward the target ladder bar take care of the grasp. Hence, for RicMonk to perform the grasp action, no feed-forward torque is applied. However, to perform the release and grasp actions, direct feed-forward torque is applied to the actuators in appropriate directions. The directions and magnitude of the torques were calculated empirically. The following image describes the directions of force applied on the arms due to torque generated in respective motors to enable the robot to perform a release action.
+<div align="center">
+<img width="500" src="/hardware/imagesAndGifs/continuousBrachaition.png" />
+</div>
+
+To validate the release of the grasp, we monitor the velocity of the swing arm. When the swing arm is still grasping the ladder bar, its velocity remains minimal. We have set a threshold velocity of 1.2 rad/s, which indicates a successful release when the swing arm reaches this velocity. Our tests ensure that only minimal torque is applied to release the grasp from the ladder bar.
+
 
 ## Atomic Behaviors
-The swing trajectories for these atomic behaviors are optimized and the animations are obtained as follows. To release the grasp of respective arms for forward or backward brachiation, feed-forward torque is applied.
+The swing trajectories for these atomic behaviors are optimized and the animations are obtained as follows. 
 
 <!-- <div align="center">
 <img width="500" src="data/model/stateMachine.png" />
