@@ -30,4 +30,4 @@ The swing trajectories for these atomic behaviours are optimized and the animati
 </div>
 
 ## Operation
-The folder **direct_collocation** contains files that provide the respective hyper-parameters for optimizing trajectories. The file **simulateTrajOpt.py** is to run for optimizing trajectories. Input the name of the trajectory (ZB, ZF, BF, FB) and the ladder bar distance (default = 0.34m). The optimized trajectories are saved in the folder with the name of the maneuver in [here](/../../../../../data/trajectories/direct_collocation/) **../../../../../data/trajectories/direct_collocation/** with respect to the current folder. 
+The folder **direct_collocation** contains files that provide the respective hyper-parameters for optimizing trajectories. The file **simulateTrajOpt.py** is to run for optimizing trajectories. Input the name of the trajectory (ZB, ZF, BF, FB) and the ladder bar distance (default = 0.34m). The optimized trajectories are saved in the folder with the name of the maneuver in [here](/../../../data/trajectories/direct_collocation/) **../../../../../data/trajectories/direct_collocation/** with respect to the current folder. 
