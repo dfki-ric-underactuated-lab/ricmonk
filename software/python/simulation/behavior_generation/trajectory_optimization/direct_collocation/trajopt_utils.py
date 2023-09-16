@@ -609,7 +609,7 @@ def create_acromonk_plant(ladder_distance):
 #     with open(urdf_path, 'w') as file:
 #         file.write(urdf)    
 
-    parser.AddModelFromFile(urdf_path)
+    parser.AddModels(urdf_path)
     plant.Finalize()
     context = plant.CreateDefaultContext()
     return plant, context, scene_graph
