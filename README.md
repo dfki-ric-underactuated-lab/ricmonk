@@ -15,7 +15,7 @@
 This project offers an open-source and low-cost kit to test control algorithms for underactuated robots. 
 It introduces a three-link underactuated brachiation robot called **RicMonk** capable of bidirectional brachiation maneuver with passive grippers inspired from [AcroMonk](https://github.com/dfki-ric-underactuated-lab/acromonk).
 RicMonk has two Quasi-Direct-Drives (QDD) that allow dynamic and agile locomotion. 
-This project offers different control methods for trajectory stabilization which can be studied using the kit. Additionally, it provides a list of components, discusses best practices for implementation, and presents results from experiments with the simulator and the real system. This repository describes the hardware (CAD, Bill Of Materials (BOM), etc.) required to build the physical system and provides the software (URDF models, simulation, and controllers) to control it.
+This project offers different control methods for trajectory stabilization which can be studied using the kit. Additionally, it provides a list of components, discusses best practices for implementation, and presents results from experiments with the simulator and the real system. This repository describes the hardware (CAD, Bill Of Materials ([BOM](/hardware/bills-of-materials.md)), etc.) required to build the physical system and provides the software (URDF models, simulation, and controllers) to control it.
 
 
 ## Research Paper
@@ -25,7 +25,6 @@ The work is submitted to the IEEE International Conference on Robotics and Autom
 ## Documentation
 
 The following provides theoretical information regarding the RicMonk:
-- [System dynamics](/hardware/dynamic.md)
 - [Mechatronic design and integration](/hardware/mechDesAndInt.md)
 - [Trajectory optimization](/software/python/simulation/behavior_generation/trajectory_optimization/README.md)
 - [Trajectory stabilization](/software/python/simulation/behavior_control/README.md)
