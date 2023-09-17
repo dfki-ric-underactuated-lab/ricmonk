@@ -4,7 +4,7 @@
 </div>
 
 ## Mechanics
-Mechanical Design Optimization and integration of necessary electrical components for a functional, capable, and safe operation of a robotic system constitute the Mechatronic integration of the robot. Inspired by the [AcroMonk](https://arxiv.org/abs/2305.08373), RicMonk was designed to portable and robust. RicMonk, guided by
+Mechanical Design Optimization and integration of necessary electrical components for a functional, capable, and safe operation of a robotic system constitute the Mechatronic integration of the robot. Inspired by the [AcroMonk](https://github.com/dfki-ric-underactuated-lab/acromonk), RicMonk was designed to portable and robust. RicMonk, guided by
 the concept of interchangeable and reusable components, stands ready to adapt effortlessly to evolving circumstances. From the bio-inspiration perspective, the RicMonk is closer to Gibbons because of the presence of the tail when compared to the AcroMonk. RicMonk’s tail also plays an important role in the robot’s functioning. It not only provides optimal placement of all the electrical components but also helps extensively in helping the robot brachiate.
 
 <div align="center">
