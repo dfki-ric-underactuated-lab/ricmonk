@@ -1,28 +1,27 @@
 # Software Installation
-All software has been tested on Ubuntu 20.04 and 22.04. To be able to run all simulation based software, install Drake (Version: 1.18.0) first into 
+All software has been tested on Ubuntu 20.04 and 22.04. To be able to run all simulation based software, install Drake first into 
 a python virtual 
 environment, as described on the [Drake website](https://drake.mit.edu/pip.html#stable-releases). 
 
-Here are the steps:
 Clone the repository
 ```
 git clone https://github.com/dfki-ric-underactuated-lab/ricmonk.git
 ```
-It is recommended to create a virtual environment as the following 
+
+## Steps
+
+Install virtual environment in your machine: 
 ```
-cd ricmonk
-python3 -m venv ricmonk_venv
-ricmonk_venv/bin/pip install --upgrade pip
+sudo apt install python3-venv -y
+```
+It is recommended to create a virtual environment. Execute the `install.sh` bash script that exists in `ricmonk/software/python/simulation` directory. This setup the virtual environement and install the dependencies.
+```
+./install.sh
+```
+
+Activat the virtual environment. 
+```
 source ricmonk_venv/bin/activate
 ```
-Naviagate to the directory where dependency text file exists:
-```
-cd software/python/simulation
-```
-Install the required dependencies:
-```
-pip install drake==1.18.0
-pip install -r requirements.txt
-```
 
-
+Navigate to the folders and execute the scripts.
