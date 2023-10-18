@@ -27,7 +27,7 @@ from utils import (
     send_rad_command_w_check
 )
 
-from reinforcement_learning_controller import get_controller
+# from reinforcement_learning_controller import get_controller
 
 FOLDER_NAME = "data/trajectories/closed_loop"
 TAU_LIMIT = 4
@@ -50,7 +50,8 @@ MOTOR_ID = [int(motorIDtext[1]), int(motorIDtext[3])]
 
 # IMU_CONFIG_ODD = (90, 0, 90) #Changing this to (0,0,0)
 IMU_CONFIG_ODD = (0, 90, 180)
-CSV_DATA = read_data(folder=FOLDER_NAME, file=FILE_NAME, up_directory=1)
+FILE_NAME = TRAJ + "_tvlqr.csv"
+CSV_DATA = read_data(folder=FOLDER_NAME, file=FILE_NAME, up_directory=3)
 DATA = prepare_store_data(n=8000)
 DATA_DES = prepare_des_data(csv_data = CSV_DATA, controller = TEST)
 NOMINAL_PCWS = create_nominal_pcws(DATA_DES)
@@ -1269,7 +1270,6 @@ def main(loop):
             save_data(valid_data, directory + "/measured.csv")
             plot_custom_data_with_dir_meas(directory, valid_data, show=True)
             
-print("DID YOU CHANGE THE 'SEND_RAD_COMMAND' FUNCTION TO 'SEND_RAD_COMMAND_W_CHECK' IN KICKBACK AND CATCH FUNCTIONS")
 zero_offset_two_motors(BUS_NUMBER, MOTOR_ID)
 #if input("Press enter"):
 #    exit()

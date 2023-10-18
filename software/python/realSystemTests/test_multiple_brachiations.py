@@ -30,7 +30,7 @@ from utils import (
     state_estimation_even,
 )
 
-from reinforcement_learning_controller import get_controller
+# from reinforcement_learning_controller import get_controller
 
 FOLDER_NAME = "data/trajectories/closed_loop"
 TAU_LIMIT = 4
@@ -56,7 +56,10 @@ DIRECTION = sys.argv[4]
 IMU_CONFIG_ODD = (0, 90, 180)
 DATA = prepare_store_data(n=8000)
 
+DIRECTION=int(DIRECTION)    # <-----
+
 if DIRECTION == 1: #Forward brachiation
+	print("hello")
 	FULL_STEP_FILE_NAME = "BF_tvlqr.csv"
 	HALF_STEP_FILE_NAME = "ZF_tvlqr.csv"
 	brachDirection = 1
@@ -67,23 +70,23 @@ elif DIRECTION == -1: #Backward brachiation
 
 # FULL_STEP_FILE_NAME = sys.argv[2]
 FULL_STEP_CSV_DATA = read_data(
-    folder=FOLDER_NAME, file=FULL_STEP_FILE_NAME, up_directory=1
-)
+    folder=FOLDER_NAME, file=FULL_STEP_FILE_NAME, up_directory=3
+)   # <-----
 FULL_STEP_DATA_DES = prepare_des_data(
     csv_data=FULL_STEP_CSV_DATA, controller=TEST
 )
 FULL_STEP_NOMINAL_PCWS = create_nominal_pcws(FULL_STEP_DATA_DES)
-print(f"Read {sys.argv[2]} for full step trajectory")
+print(f"Read {FULL_STEP_FILE_NAME} for full step trajectory")
 
 # HALF_STEP_FILE_NAME = sys.argv[5]
 HALF_STEP_CSV_DATA = read_data(
-    folder=FOLDER_NAME, file=HALF_STEP_FILE_NAME, up_directory=1
-)
+    folder=FOLDER_NAME, file=HALF_STEP_FILE_NAME, up_directory=3
+)   # <-----
 HALF_STEP_DATA_DES = prepare_des_data(
     csv_data=HALF_STEP_CSV_DATA, controller=TEST
 )
 HALF_STEP_NOMINAL_PCWS = create_nominal_pcws(HALF_STEP_DATA_DES)
-print(f"Read {sys.argv[5]} for half step trajectory")
+print(f"Read {HALF_STEP_FILE_NAME} for half step trajectory")
 print("")
 
 INDEX = [0]
