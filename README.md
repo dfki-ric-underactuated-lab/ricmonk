@@ -88,6 +88,6 @@ This work has been released under the BSD 3-Clause License. Details and terms of
 @article{2024_ICRA_ricmonk,
 journal={RicMonk: A Three-Link Brachiation Robot with Passive Grippers for Energy-efficient Brachiation}, 
 author={Grama, Shourie S and Javadi, Mahdi and Kumar, Shivesh and Zamani Boroujeni, Hossein and Kirchner, Frank},
-note={submitted and it is currently under review}}
+note={Accepted January 29, 2024}}
 ```
 
