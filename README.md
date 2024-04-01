@@ -32,7 +32,7 @@ The following provides theoretical information regarding the RicMonk:
 
 
 For operating the RicMonk, the following may serve as a reference:
-- [Basic information](/docs/README.md)
+- [Basic information](/hardware/README.md)
 - [Brachiaiton realization](/software/python/realSystemTests/multipleBrachiationRealize.md)
 - [Software Guide](/software/python/README.md)
 

@@ -34,7 +34,7 @@ All electronics of the AcroMonk are powered by a LiPo battery with the following
 - Power: $26.64 \text{ WH}$
 
 ### Raspberry Pi and pi3hat
-A Raspberry Pi4B ([setup](../docs/README.md) is used as a processing unit for the robot, and the [mjbots pi3hat](https://mjbots.com/products/mjbots-pi3hat-r4-4b) is used for communication between the Raspberry Pi and the motors. The Inertia Measurement Unit (IMU)([usage](https://github.com/mjbots/pi3hat/blob/master/lib/python/examples/imu_example.py)) on the pi3hat is also used for state estimation purposes. The Raspberry Pi is connected, via WiFi using a Secure Shell Protocol (SSH), to the server that is operated by the user. The Raspberry Pi stores the desired trajectories, the applications to run the robot and help it track trajectories, and measured trajectories.
+A Raspberry Pi4B ([setup](/hardware/README.md) is used as a processing unit for the robot, and the [mjbots pi3hat](https://mjbots.com/products/mjbots-pi3hat-r4-4b) is used for communication between the Raspberry Pi and the motors. The Inertia Measurement Unit (IMU)([usage](https://github.com/mjbots/pi3hat/blob/master/lib/python/examples/imu_example.py)) on the pi3hat is also used for state estimation purposes. The Raspberry Pi is connected, via WiFi using a Secure Shell Protocol (SSH), to the server that is operated by the user. The Raspberry Pi stores the desired trajectories, the applications to run the robot and help it track trajectories, and measured trajectories.
 
 
 ### Actuator
