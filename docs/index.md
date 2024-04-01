@@ -1,11 +1,9 @@
 ---
 title: "RicMonk: A Three-Link Brachiation Robot with Passive Grippers for Energy-Efficient Brachiation"
-
 pdf: https://arxiv.org/abs/2403.15762
 youtube: https://youtu.be/hOuDQI7CD8w?si=d_ABz1Ux-a2fxKTy
-
 github: https://github.com/dfki-ric-underactuated-lab/ricmonk
-
+poster: static/poster.pdf
 authors:
   - {name: Shourie S.  Grama, affiliation_key: 1, link: https://www.shouriegs.com/}
   - {name: Mahdi Javadi, affiliation_key: 1, link: https://robotik.dfki-bremen.de/de/ueber-uns/mitarbeiter/maja04.html}
@@ -103,7 +101,7 @@ To summarise the work,
 ## Citation
 ```
 @article{2024_ICRA_ricmonk,
-journal={RicMonk: A Three-Link Brachiation Robot with Passive Grippers for Energy-efficient Brachiation}, 
-author={Grama, Shourie S and Javadi, Mahdi and Kumar, Shivesh and Zamani Boroujeni, Hossein and Kirchner, Frank},
-note={Accepted January 29, 2024}}
+  title={RicMonk: A Three-Link Brachiation Robot with Passive Grippers for Energy-efficient Brachiation},
+  author={Grama, Shourie S and Javadi, Mahdi and Kumar, Shivesh and Zamani Boroujeni, Hossein and Kirchner, Frank},
+  note={Accepted January 29, 2024 in International Conference on Robotics and Automation (ICRA)}}
 ```
