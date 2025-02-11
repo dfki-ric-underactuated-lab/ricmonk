@@ -83,11 +83,17 @@ This work has been released under the BSD 3-Clause License. Details and terms of
 
 ## Citation
 
-1. Grama S., Javadi M., Kumar S., Zamani H., Kirchner F., (2024). RicMonk: A Three-Link Brachiation Robot with Passive Grippers for Energy-efficient Brachiation. Submitted in: IEEE International Conference on Robotics and Automation (ICRA).
+1. S. S. Grama, M. Javadi, S. Kumar, H. Z. Boroujeni and F. Kirchner, "Ricmonk: A Three-Link Brachiation Robot with Passive Grippers for Energy-Efficient Brachiation," 2024 IEEE International Conference on Robotics and Automation (ICRA), Yokohama, Japan, 2024, pp. 8920-8926, doi: 10.1109/ICRA57147.2024.10611003.
 ```
-@article{2024_ICRA_ricmonk,
-  title={RicMonk: A Three-Link Brachiation Robot with Passive Grippers for Energy-efficient Brachiation},
-  author={Grama, Shourie S and Javadi, Mahdi and Kumar, Shivesh and Zamani Boroujeni, Hossein and Kirchner, Frank},
-  note={Accepted January 29, 2024 in International Conference on Robotics and Automation (ICRA)}}
+@INPROCEEDINGS{2024_icra_ricmonk,
+  author={Grama, Shourie S. and Javadi, Mahdi and Kumar, Shivesh and Boroujeni, Hossein Zamani and Kirchner, Frank},
+  booktitle={2024 IEEE International Conference on Robotics and Automation (ICRA)}, 
+  title={Ricmonk: A Three-Link Brachiation Robot with Passive Grippers for Energy-Efficient Brachiation}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={8920-8926},
+  keywords={Performance evaluation;Regulators;Tail;Energy efficiency;Software;Trajectory;Grippers;Underactuated robots;biologically-inspired robots;education robotics},
+  doi={10.1109/ICRA57147.2024.10611003}}
 ```
 
